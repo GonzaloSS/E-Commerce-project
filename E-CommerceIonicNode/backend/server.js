@@ -30,6 +30,12 @@ db.sequelize.sync();
 
 require("./app/routes/address.routes")(app);
 require("./app/routes/products.routes")(app);
+require("./app/routes/order.routes")(app);
+require("./app/routes/user.routes")(app);
+require("./app/routes/orderProduct.routes")(app);
+
+
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
