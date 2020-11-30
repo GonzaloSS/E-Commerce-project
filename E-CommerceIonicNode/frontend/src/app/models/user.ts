@@ -5,7 +5,7 @@ export interface User {
     email: string;
     password: string;
     username: string;
-    isAdmin: string;
-    id_address: number;
+    isAdmin: boolean;
+    //id_address: number;
 }
 

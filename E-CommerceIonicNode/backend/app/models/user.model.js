@@ -18,8 +18,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       isAdmin: {
-        type: Sequelize.STRING
-      },
+        type: Sequelize.BOOLEAN
+      }/*,
       id_address: {
         type: Sequelize.INTEGER,
         required:true,
@@ -32,8 +32,8 @@ module.exports = (sequelize, Sequelize) => {
       updatedAt: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-    }
-    }, { timestamps: true});
+    }*/
+    }, { timestamps: false});
   
     return user;
   };

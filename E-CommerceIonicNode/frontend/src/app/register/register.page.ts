@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 import { Address } from '../models/address';
 import { User } from '../models/user';
 import { EcommerceService } from '../services/ecommerce.service';
@@ -14,14 +14,65 @@ import { EcommerceService } from '../services/ecommerce.service';
 export class RegisterPage implements OnInit {
 
 
+
   address: Address[];
-  registerForm: FormGroup;
   user: User[];
   
-  constructor(public fb: FormBuilder,
+  constructor(private router: Router, private authService: AuthService, private ecommerceService: EcommerceService) {}
+
+  ngOnInit(){
+
+  }
+
+register(form){
+  let address: Address = {
+    id: null,
+    street: form.value.street,
+    number: form.value.number,
+    zipCode: form.value.zipCode,
+    province: form.value.province,
+    country: form.value.country
+    
+  };
+  let user: User = {
+    id: null,
+    name: form.value.name,
+    lastName: form.value.name,
+    email: form.value.name,
+    password: form.value.name,
+    username: form.value.name,
+    isAdmin: false,
+    //id_address: 1
+
+  };
+  this.ecommerceService.addAddress(address).subscribe((res) => {
+    console.log(user);
+    
+    this.authService.register(user).subscribe((res) => {
+      this.router.navigateByUrl('home')
+    })
+  })
+ 
+  
+  
+}
+
+
+
+
+
+
+
+
+
+
+  /*constructor(public fb: FormBuilder,
     private ecommerceService: EcommerceService,
     private router: Router,) {
       this.registerForm = this.fb.group({
+        name: [''],
+        username: [''],
+        password: [''],
         street: [''],
         number: [''],
         zipCode: [''],
@@ -55,7 +106,7 @@ export class RegisterPage implements OnInit {
         }
       
   }
-
+*/
   
 
 

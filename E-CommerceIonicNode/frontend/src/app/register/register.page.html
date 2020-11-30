@@ -6,38 +6,57 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+  <form #form="ngForm" (ngSubmit)="register(form)">
+
+    <div padding>
+      <ion-item>
+        <ion-input name="name" type="text" placeholder="Name" ngModel required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input name="lastName" type="text" placeholder="Last Name"  ngModel required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="email" type="email" placeholder="youremail@youremail.com" ngModel required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="password" type="password" placeholder="Password" ngModel required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="username" type="text"  placeholder="Username" ngModel required>
+        </ion-input>
+      </ion-item>
+    </div>
+    &nbsp;
+    <div padding>
     <ion-item>
-      <ion-label position="floating">Street</ion-label>
-      <ion-input formControlName="street" type="text" required></ion-input>
+      <ion-input name="street" type="text" placeholder="Street" ngModel required></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">number</ion-label>
-      <ion-input formControlName="number" type="text" required>
+      <ion-input name="number" type="text" placeholder="Number"  ngModel required>
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Zip Code</ion-label>
-      <ion-input formControlName="zipCode" type="text" required>
+      <ion-input name="zipCode" type="text" placeholder="Zip Code" ngModel required>
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Province</ion-label>
-      <ion-input formControlName="province" type="text" required>
+      <ion-input name="province" type="text" placeholder="Province" ngModel required>
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Country</ion-label>
-      <ion-input formControlName="country" type="text" required>
+      <ion-input name="country" type="text"  placeholder="Country" ngModel required>
       </ion-input>
     </ion-item>
+  </div>
  
-    
-    
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="primary" shape="full" expand="block">Add a new address</ion-button>
+        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
       </ion-col>
     </ion-row>
   </form>

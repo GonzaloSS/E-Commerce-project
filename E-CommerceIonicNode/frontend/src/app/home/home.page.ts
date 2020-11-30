@@ -1,23 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage  {
 
-  constructor(private route: Router) {}
+  constructor(private router: Router, private renderer: Renderer2, private authService: AuthService) {}
+ 
+  
+    loginOrLogOut(){
+      this.authService.isLoggedIn().then(loggedIn => {
+        if(loggedIn){
+         console.log("Sesión iniciada");
+         
+          
+        } else{
+        console.log("Sin sesión");
+        }
+        
+      })
+    }
+    logOut(){
+      this.authService.logout().then(() => {
+        this.router.navigateByUrl("/home");
+      });
+    }
+  
+    
+  
 
   goToContactPage(){
-    this.route.navigateByUrl("contact-page");
+    this.router.navigateByUrl("contact-page");
   }
 
   goToCatalogue(){
-    this.route.navigateByUrl("catalogue");
+    this.router.navigateByUrl("catalogue");
   }
   goToLogin(){
-    this.route.navigateByUrl("login");
+    this.router.navigateByUrl("login");
   }
+
+  
+
+  
 }

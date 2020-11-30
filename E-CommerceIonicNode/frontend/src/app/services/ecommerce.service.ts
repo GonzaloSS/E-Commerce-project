@@ -4,8 +4,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { Products } from '../models/product';
 import { Address } from '../models/address';
-import { User } from '../models/user';
-import { AuthResponse } from '../models/AuthResponse';
 
 
 
@@ -25,36 +23,10 @@ const apiUrlUserRegister = "http://localhost:8080/api/address/"
 
 export class EcommerceService {
 
-  AUTH_SERVER_ADDRESS = "http://localhost:8080"
 
   constructor(private httpClient: HttpClient) { }
 
- /* private getOptions(user: User){
-    let base64UserAndPassword = window.btoa(user.username + ":" + user.password);
-
-    let basicAccess = 'Basic' + base64UserAndPassword;
-
-    let options = {
-      headers:{
-        'Authorization' : basicAccess,
-        'Content-Type' : 'application/x-www-form-urlencoded',
-      }
-    };
-
-    return options;
-  }
-
-  /*register(user: User): Observable<AuthResponse> {
-    return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/api/users/`, user, this.getOptions(user)).pipe(
-      tap(async (res:  AuthResponse ) => {
-
-        if (res.user) {
-          await this.storage.set("token", res.access_token);
-        }
-      })
-
-    );
-  }*/
+ 
 
   getProducts(): Observable<Products[]> {
     return this.httpClient.get<Products[]>(apiUrlProducts)

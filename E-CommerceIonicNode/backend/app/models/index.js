@@ -38,7 +38,7 @@ db.Sequelize = Sequelize;
 ///Associations///
 
 //Foreign Key for user's table//
-db.address.hasMany(db.user, {as: 'users', foreignKey: 'id_address'});
+//db.address.hasMany(db.user, {as: 'users', foreignKey: 'id_address'});
 ////////////////////////////////
 
 //Foreign Key for order's table//

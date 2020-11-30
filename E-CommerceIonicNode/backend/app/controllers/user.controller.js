@@ -22,7 +22,7 @@ exports.create = (req, res) => {
     password: req.body.password,
     username: req.body.username,
     isAdmin: req.body.isAdmin ? req.body.isAdmin : false,
-    id_address: req.body.id_address
+   // id_address: req.body.id_address
   };
 
   User.findOne({ where: { username: user.username } })
