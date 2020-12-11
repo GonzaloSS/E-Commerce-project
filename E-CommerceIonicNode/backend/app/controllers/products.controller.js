@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 // req --> request (contains the body)
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.name  || !req.body.description || !req.body.taxRate || !req.body.image 
+  if (!req.body.name  || !req.body.description || !req.body.taxRate || !req.body.price ||!req.body.image 
     || !req.body.category || !req.body.availability) {
     res.status(400).send({
       message: "Content can not be empty!"
@@ -18,10 +18,12 @@ exports.create = (req, res) => {
   const products = {
     name: req.body.name,
     description: req.body.description,
+    price: req.body.price,
     taxRate: req.body.taxRate,
     image: req.body.image,
     category: req.body.category,
-    availability: req.body.availability
+    availability: req.body.availability,
+    amount: 1
   };
 
   // Save a Product in the database

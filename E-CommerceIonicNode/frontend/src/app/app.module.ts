@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import {ModalpopupPageModule} from './modal/modalpopup/modalpopup.module'
+import { SideMenuPageModule } from './side-menu/side-menu.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {ModalpopupPageModule} from './modal/modalpopup/modalpopup.module'
     AppRoutingModule, 
     HttpClientModule,
     AuthModule,
-    ModalpopupPageModule
+    ModalpopupPageModule,
+    SideMenuPageModule
     
   ],
   providers: [

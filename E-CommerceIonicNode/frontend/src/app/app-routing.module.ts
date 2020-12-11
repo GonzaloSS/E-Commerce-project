@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./contact-page/contact-page.module').then( m => m.ContactPagePageModule)
   },
   {
-    path: 'catalogue',
-    loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -31,6 +27,26 @@ const routes: Routes = [
     path: 'modalpopup',
     loadChildren: () => import('./modal/modalpopup/modalpopup.module').then( m => m.ModalpopupPageModule)
   },
+  {
+    path: 'side-menu',
+    loadChildren: () => import('./side-menu/side-menu.module').then( m => m.SideMenuPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'cart-modal',
+    loadChildren: () => import('./cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  }
+  
+  
+  
+  
 ];
 
 @NgModule({

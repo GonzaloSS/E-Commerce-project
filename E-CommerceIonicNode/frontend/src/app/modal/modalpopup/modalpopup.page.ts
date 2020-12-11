@@ -26,4 +26,7 @@ export class ModalpopupPage implements OnInit {
     this.CloseModal();
     this.router.navigateByUrl('register');
   }
+
+
+  
 }

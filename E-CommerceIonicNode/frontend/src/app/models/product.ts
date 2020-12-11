@@ -1,10 +1,11 @@
-export class Products{
+export interface Products{
     id: number;
     name: string;
     description: string;
-    price: string;
+    price: number;
     taxRate: string;
     image: string;
     category: string;
     availability: string;
+    amount: number;
 }

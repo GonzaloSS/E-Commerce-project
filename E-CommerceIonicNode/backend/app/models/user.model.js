@@ -1,7 +1,7 @@
 const { sequelize, Sequelize }= require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-    const user = sequelize.define("user", {
+    const user = sequelize.define("user", { 
       name: {
         type: Sequelize.STRING
       },
@@ -19,7 +19,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       isAdmin: {
         type: Sequelize.BOOLEAN
-      }/*,
+      }
+    }, { timestamps: false});
+  /*,
       id_address: {
         type: Sequelize.INTEGER,
         required:true,
@@ -33,7 +35,5 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     }*/
-    }, { timestamps: false});
-  
     return user;
   };

@@ -38,7 +38,7 @@ export class HomePage  {
   }
 
   goToCatalogue(){
-    this.router.navigateByUrl("catalogue");
+    this.router.navigateByUrl("cart");
   }
   goToLogin(){
     this.router.navigateByUrl("login");
