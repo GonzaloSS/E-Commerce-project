@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add a new Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="addProduct(form)">
+
+    <div padding>
+    <ion-item>
+      <ion-input name="name" type="text" placeholder="Product Name" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input name="description" type="text" placeholder="Description"  ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="price" type="text" placeholder="Price €" ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="taxRate" type="text" placeholder="Tax Rate €" ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="image" type="text" placeholder="Image description only" ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="category" type="text"  placeholder="Category" ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="availability" type="text"  placeholder="availability" ngModel required>
+      </ion-input>
+    </ion-item>
+  </div>
+ 
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add product</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

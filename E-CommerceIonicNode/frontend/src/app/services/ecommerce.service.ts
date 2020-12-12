@@ -10,10 +10,11 @@ import { Address } from '../models/address';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded'
+    
   })
 };
 const apiUrlProducts = "http://localhost:8080/api/product"
-const apiUrlUserRegister = "http://localhost:8080/api/address/"
+const apiAddress = "http://localhost:8080/api/address"
 
 
 @Injectable({
@@ -25,6 +26,7 @@ export class EcommerceService {
 
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);
+  currentProductId: number;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -38,6 +40,56 @@ export class EcommerceService {
       );
   }
 
+  addProduct(product: Products): Observable<any> {
+
+    let bodyEncoded = new URLSearchParams();
+    bodyEncoded.append("name", product.name);
+    bodyEncoded.append("description", product.description);
+    bodyEncoded.append("price", product.price);
+    bodyEncoded.append("taxRate", product.taxRate);
+    bodyEncoded.append("image", product.image);
+    bodyEncoded.append("category", product.category);
+    bodyEncoded.append("availability", product.availability);
+    let body = bodyEncoded.toString();
+
+    return this.httpClient.post(apiUrlProducts, body, httpOptions)
+  }
+
+  deleteProduct(id: number): Observable<any>{
+    return this.httpClient.delete(apiUrlProducts + "/" + id)
+  }
+
+  setCurrentProductId(id: number) {
+    this.currentProductId = id;
+  }
+
+  getCurrentProductId(): number {
+    return this.currentProductId;
+  }
+
+  getProductById(id: number): Observable<Products> {
+    return this.httpClient.get<Products>(apiUrlProducts + "/" + id);
+  }
+
+  updateProduct(id: number, product: Products): Observable<any> {
+    let bodyEncoded = new URLSearchParams();
+    bodyEncoded.append("name", product.name);
+    bodyEncoded.append("description", product.description);
+    bodyEncoded.append("price", product.price);
+    bodyEncoded.append("taxRate", product.taxRate);
+    bodyEncoded.append("image", product.image);
+    bodyEncoded.append("category", product.category);
+    bodyEncoded.append("availability", product.availability);
+    let body = bodyEncoded.toString();
+
+    return this.httpClient.put(apiUrlProducts + "/" + id, body, httpOptions)
+
+  }
+
+
+
+
+
   addAddress(address: Address): Observable<any> {
 
     let bodyEncoded = new URLSearchParams();
@@ -48,8 +100,12 @@ export class EcommerceService {
     bodyEncoded.append("country", address.country);
     let body = bodyEncoded.toString();
 
-    return this.httpClient.post(apiUrlUserRegister, body, httpOptions)
+    return this.httpClient.post(apiAddress, body, httpOptions)
   }
+
+  
+
+
   private handleError<T>(operation = 'operation', result ?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -66,4 +122,6 @@ export class EcommerceService {
   getCartItemCount() {
     return this.cartItemCount;
   }
+
+  
 }

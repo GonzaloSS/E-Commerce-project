@@ -1,50 +1,49 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage  {
+export class HomePage implements OnInit {
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username: string;
 
-  constructor(private router: Router, private renderer: Renderer2, private authService: AuthService) {}
- 
-  
-    loginOrLogOut(){
-      this.authService.isLoggedIn().then(loggedIn => {
-        if(loggedIn){
-         console.log("Sesión iniciada");
-         
-          
-        } else{
-        console.log("Sin sesión");
-        }
-        
-      })
-    }
-    logOut(){
-      this.authService.logout().then(() => {
-        this.router.navigateByUrl("/home");
-      });
-    }
-  
-    
-  
+  constructor(
+    private router: Router,
+    private tokenStorageService: TokenStorageService) { }
 
-  goToContactPage(){
+  ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+
+    }
+  }
+
+  logout() {
+    this.tokenStorageService.signOut();
+    window.location.reload()
+  }
+
+  goToContactPage() {
     this.router.navigateByUrl("contact-page");
   }
 
-  goToCatalogue(){
+  goToCatalogue() {
     this.router.navigateByUrl("cart");
   }
-  goToLogin(){
+  goToLogin() {
     this.router.navigateByUrl("login");
   }
 
-  
 
-  
+
+
 }

@@ -1,39 +1,60 @@
 <ion-header>
   <ion-toolbar>
-    <img (click)="goToMain()" id="logoImg" src="https://thetandementerprise.com/wp-content/uploads/2020/06/logo-retina.png"/>
+    <img (click)="goToMain()" id="logoImg"
+      src="https://thetandementerprise.com/wp-content/uploads/2020/06/logo-retina.png" />
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <div class="container" id="formStyle">
-  <form #form="ngForm" (ngSubmit)="login(form)">
-    <ion-grid>
-      <ion-row color="primary" class="ion-justify-content-center">
-        <ion-col size-md="6" size-lg="5" size-xs="12">
-          <div>
-            <h3>Login</h3>
+  <div class="col-md-12" id="divMain">
+    <div class="card card-container">
+      <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+
+      <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+            #username="ngModel" />
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">
+            Username is required!
           </div>
-          <div  class="ion-text-center">
-            <ion-item>
-              <ion-input name="username" type="text" placeholder="Username" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
-            </ion-item>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
+            #password="ngModel" />
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
           </div>
-          <div  class="ion-text-center">
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">
+            Login
+          </button>
+        </div>
+        <div class="form-group">
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+            Login failed: {{ errorMessage }}
           </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <div class="ion-text-center" id="textRegister">
-            If you don't have an account, please <a routerLink='/register'>register</a> first!
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
-</div>
+        </div>
+        <ion-row>
+          <ion-col>
+            <div class="ion-text-center">
+              If you don't have an account, please <a routerLink='/register'>register</a> first!
+            </div>
+          </ion-col>
+        </ion-row>
+      </form>
+      
+
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        Sesión iniciada correctamente!!
+        <ion-button (click)="goToMain()" slot="end">Go home</ion-button>
+      </div>
+    </div>
+  </div>
+
 </ion-content>

@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import('./modal/modalpopup/modalpopup.module').then( m => m.ModalpopupPageModule)
   },
   {
-    path: 'side-menu',
-    loadChildren: () => import('./side-menu/side-menu.module').then( m => m.SideMenuPageModule)
-  },
-  {
     path: 'cart',
     loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
   },
@@ -42,6 +38,18 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'add-address',
+    loadChildren: () => import('./add-address/add-address.module').then( m => m.AddAddressPageModule)
+  },
+  {
+    path: 'add-product',
+    loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
+  },
+  {
+    path: 'edit-product',
+    loadChildren: () => import('./edit-product/edit-product.module').then( m => m.EditProductPageModule)
   }
   
   

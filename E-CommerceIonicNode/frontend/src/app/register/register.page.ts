@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
-import { Address } from '../models/address';
-import { User } from '../models/user';
-import { EcommerceService } from '../services/ecommerce.service';
-
+import { MenuController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -12,103 +10,62 @@ import { EcommerceService } from '../services/ecommerce.service';
 })
 
 export class RegisterPage implements OnInit {
+  form: any = {};
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+  isLoggedIn: boolean;
+  private roles: string[];
+  username: string;
 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private tokenStorageService: TokenStorageService,
+    private menu: MenuController) { }
 
-
-  address: Address[];
-  user: User[];
-  
-  constructor(private router: Router, private authService: AuthService, private ecommerceService: EcommerceService) {}
-
-  ngOnInit(){
-
+  ngOnInit() {
   }
-
-register(form){
-  let address: Address = {
-    id: null,
-    street: form.value.street,
-    number: form.value.number,
-    zipCode: form.value.zipCode,
-    province: form.value.province,
-    country: form.value.country
-    
-  };
-  let user: User = {
-    id: null,
-    name: form.value.name,
-    lastName: form.value.name,
-    email: form.value.name,
-    password: form.value.name,
-    username: form.value.name,
-    isAdmin: false,
-    //id_address: 1
-
-  };
-  this.ecommerceService.addAddress(address).subscribe((res) => {
-    console.log(user);
-    
-    this.authService.register(user).subscribe((res) => {
-      this.router.navigateByUrl('home')
-    })
-  })
  
-  
-  
-}
+  toggleMenu() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
 
+      if (this.roles.includes('ROLE_USER')) {
+        this.menu.enable(true, 'user');
+        this.menu.open('user');
 
-
-
-
-
-
-
-
-  /*constructor(public fb: FormBuilder,
-    private ecommerceService: EcommerceService,
-    private router: Router,) {
-      this.registerForm = this.fb.group({
-        name: [''],
-        username: [''],
-        password: [''],
-        street: [''],
-        number: [''],
-        zipCode: [''],
-        province:[],
-        country:['']
-
-      })
-     }
-
-  ngOnInit() {}
-
-
-  onFormSubmit() {
-    if (!this.registerForm.valid) {
-      console.log("no va");
-      return false;
-    } else {
-      let address: Address = {
-        id: null,
-        street: this.registerForm.value.street,
-        number: this.registerForm.value.number,
-        zipCode: this.registerForm.value.zipCode,
-        province: this.registerForm.value.province,
-        country: this.registerForm.value.country
       }
-      
-      this.ecommerceService.addAddress(address)
-        .subscribe((res) => {
-          this.router.navigateByUrl("/home")
-          });
-        }
-      
+      if(this.roles.includes('ROLE_ADMIN')) {
+        this.menu.enable(true, 'admin');
+        this.menu.open('admin');
+      }
+
+      this.username = user.username;
+    } else {
+      this.menu.enable(true, 'guest');
+      this.menu.open('guest');
+    }
+
   }
-*/
+
+  onSubmit() {
+    this.authService.register(this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.router.navigateByUrl("home");
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
+
   
-
-
-
 }
