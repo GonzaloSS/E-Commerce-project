@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -6,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-    origin: "*"
+  origin: "http://localhost:8100"
 };
 
 app.use(cors(corsOptions));
@@ -17,63 +16,45 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static('public'));
-
+// database
 const db = require("./app/models");
+const Role = db.role;
 
-// explotation time.
 db.sequelize.sync();
-
-// development time only. Drop and re-sync db.
-// db.sequelize.sync({ force: true }).then(() => {
-//     console.log("Drop and re-sync db.");
+// force: true will drop the table if it already exists
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync Database with { force: true }');
+//   initial();
 // });
 
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
+});
 
-app.use(function (req, res, next) {
-    // check header or url parameters or post parameters for token
-    var token = req.headers['authorization'];
-    if (!token) return next(); //if no token, continue
-  
-    if(req.headers.authorization.indexOf('Basic ') === 0){
-      // verify auth basic credentials
-      const base64Credentials =  req.headers.authorization.split(' ')[1];
-      const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-      const [username, password] = credentials.split(':');
-  
-      req.body.username = username;
-      req.body.password = password;
-  
-      return next();
-    }
-  
-    token = token.replace('Bearer ', '');
-    // .env should contain a line like JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
-    jwt.verify(token, process.env.JWT_SECRET, function (err, user) {
-      if (err) {
-        return res.status(401).json({
-          error: true,
-          message: "Invalid user."
-        });
-      } else {
-        req.user = user; //set the user to req so other routes can use it
-        req.token = token;
-        next();
-      }
-    });
-  });
-
-require("./app/routes/address.routes")(app);
-require("./app/routes/products.routes")(app);
-require("./app/routes/order.routes")(app);
-require("./app/routes/user.routes")(app);
-require("./app/routes/orderProduct.routes")(app);
-
-
-
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port ${PORT}.`);
 });
+
+function initial() {
+  Role.create({
+    id: 1,
+    name: "user"
+  });
+ 
+  Role.create({
+    id: 2,
+    name: "moderator"
+  });
+ 
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+}

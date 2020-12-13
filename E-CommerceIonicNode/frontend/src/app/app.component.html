@@ -1,7 +1,7 @@
 <ion-app>
   <ion-menu type="overlay" side="start" menuId="user" contentId="main">
     <ion-header>
-      <ion-toolbar color="primary">
+      <ion-toolbar color="medium">
         <ion-title>User Menu</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -36,7 +36,7 @@
 
   <ion-menu side="start" menuId="guest" contentId="main">
     <ion-header>
-      <ion-toolbar color="primary">
+      <ion-toolbar color="medium">
         <ion-title>Guest Menu</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -57,7 +57,7 @@
           <ion-icon name="log-in-outline"></ion-icon>
           Log-in
         </ion-item>
-        <ion-item [routerLink]="['contact-page']">
+        <ion-item [routerLink]="['register']">
           <ion-icon name="person-add-outline"></ion-icon>
           Register
         </ion-item>
@@ -70,8 +70,8 @@
 
   <ion-menu side="start" menuId="admin" contentId="main">
     <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>User Menu</ion-title>
+      <ion-toolbar color="medium">
+        <ion-title>Admin Menu</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>

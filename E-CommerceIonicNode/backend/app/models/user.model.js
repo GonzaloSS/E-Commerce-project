@@ -1,39 +1,22 @@
-const { sequelize, Sequelize }= require("sequelize");
-
 module.exports = (sequelize, Sequelize) => {
-    const user = sequelize.define("user", { 
-      name: {
-        type: Sequelize.STRING
-      },
-      lastName: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
-      },
-      username:{
-        type: Sequelize.STRING
-      },
-      isAdmin: {
-        type: Sequelize.BOOLEAN
-      }
-    }, { timestamps: false});
-  /*,
-      id_address: {
-        type: Sequelize.INTEGER,
-        required:true,
-        allowNull:false
-      },
-      createdAt: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+  const User = sequelize.define("user", {
+    username: {
+      type: Sequelize.STRING
     },
-      updatedAt: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-    }*/
-    return user;
-  };
+    email: {
+      type: Sequelize.STRING
+    },
+    password: {
+      type: Sequelize.STRING
+    },
+    name: {
+      type: Sequelize.STRING
+    },
+    lastName:{
+      type: Sequelize.STRING
+    }
+    
+  });
+
+  return User;
+};

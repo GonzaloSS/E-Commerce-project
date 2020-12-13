@@ -24,6 +24,8 @@ export class CartPage {
   isLoggedIn = false;
   username: string;
   isAdmin: boolean;
+  currentUser: any;
+
 
   @ViewChild('cart', { static: false, read: ElementRef }) fab: ElementRef;
 
@@ -53,11 +55,15 @@ export class CartPage {
 
   ngOnInit() {
       
+    
+    
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
+      this.currentUser = this.tokenStorageService.getUser();
 
       if(this.roles.includes('ROLE_ADMIN')) {
         this.isAdmin= true;
@@ -135,6 +141,15 @@ export class CartPage {
     } else {
       document.body.setAttribute('color-theme', 'lightS')
     }
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    window.location.reload();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 
 
@@ -223,9 +238,5 @@ export class CartPage {
     }
 
   }
-
-
-
-
 
 }

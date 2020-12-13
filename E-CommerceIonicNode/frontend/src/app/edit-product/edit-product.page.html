@@ -30,13 +30,6 @@
         </ion-input>
       </ion-item>
   
-  
-      <ion-item>
-        <ion-label position="floating">Availability</ion-label>
-        <ion-input formControlName="availability" type="text" required>
-        </ion-input>
-      </ion-item>
-  
       <ion-item>
         <ion-label position="floating">image</ion-label>
         <ion-input formControlName="image" type="text" required>
@@ -44,10 +37,27 @@
       </ion-item>
    
       <ion-item>
-        <ion-label position="floating">Category</ion-label>
-        <ion-input formControlName="category" type="text" required>
-        </ion-input>
+        <ion-label>Category</ion-label>
+        <ion-select formControlName="category" type="text" required>
+          <ion-select-option value="Lácteos">Lácteos</ion-select-option>
+          <ion-select-option value="Carne/Pescado/Huevos">Carne/Pescado/Huevos</ion-select-option>
+          <ion-select-option value="Patatas/Legumbres/Frutos secos">Patatas/Legumbres/Frutos secos</ion-select-option>
+          <ion-select-option value="Verduras/Hortalizas">Verduras/Hortalizas</ion-select-option>
+          <ion-select-option value="Frutas">Frutas</ion-select-option>
+          <ion-select-option value="Cereales/Derivados/Azúcar y Dulces">Cereales/Derivados/Azúcar y Dulces
+          </ion-select-option>
+          <ion-select-option value="Grasas/Aceite/Mantequilla">Grasas/Aceite/Mantequilla</ion-select-option>
+          <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+        </ion-select>
       </ion-item>
+
+      <ion-item>
+        <ion-label>Availability</ion-label>
+        <ion-select formControlName="availability" type="text" required>
+          <ion-select-option value="Yes">Yes</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+       </ion-item>
      
       <ion-row>
         <ion-col>
