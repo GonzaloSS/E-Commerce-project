@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="start" (click)="toggleMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+    <p id="data">Personal data</p>
+  <div class="container">
+    <p>Username: {{currentUser.username}}</p>
+    <p>E-mail: {{currentUser.email}}</p>
+    <p>Name: {{currentUser.name}}</p>
+    <p>Last Name: {{currentUser.lastName}}</p>
+
+  </div>
+  <div class="buttons">
+  <ion-button color="medium" (click)="logout()">Log out</ion-button>
+  <ion-button color="medium" (click)="updateInfo(currentUser.id)">Update User</ion-button>
+  <ion-button color="medium" (click)="addAddress()">Add Address</ion-button>
+</div>
+
+
+
+
+
+
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
+
+  <img id="logoImg" src="https://thetandementerprise.com/wp-content/uploads/2020/06/logo-retina.png" />
+</ion-content>

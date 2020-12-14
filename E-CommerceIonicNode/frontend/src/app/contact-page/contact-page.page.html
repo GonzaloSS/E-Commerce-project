@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="start" (click)="toggleMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>Contact</ion-title>
+    <ion-item slot="end">
+      <ion-icon name="moon" ></ion-icon>
+      <ion-toggle (ionChange)='toggleTheme($event)'></ion-toggle>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" >
+  <p id="text1">Our Contact</p>
+  <ion-item-divider id="line"></ion-item-divider>
+
+  <p id="text2" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim sodales quam in feugiat. Sed dapibus neque
+    nisi, sit amet dapibus nunc sodales id. Pellentesque a sodales nunc. Nunc ut leo sit amet diam scelerisque
+    pellentesque a quis purus. Phasellus congue nulla eget maximus lobortis. Ut iaculis luctus tortor varius
+    ullamcorper. Cras rhoncus vitae mi posuere consectetur. Cras dapibus hendrerit enim, eu fringilla turpis
+    pellentesque non. Vestibulum ullamcorper pharetra sem id bibendum. Nam quis convallis tellus. Phasellus vel lacus
+    tristique.</p>
+
+  </div>
+  <img id="imgTandem"src="https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/116867362_159591289065251_5252384181238766273_o.jpg?_nc_cat=103&ccb=2&_nc_sid=e3f864&_nc_ohc=u7h95wt2K80AX-3uvRR&_nc_ht=scontent-mad1-1.xx&oh=a4f8e5588c33e148d0921fb52bf31bb4&oe=5FE58837"/>
+</ion-content>

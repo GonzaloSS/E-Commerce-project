@@ -1,18 +1,18 @@
 module.exports = (sequelize, Sequelize) => {
     const order = sequelize.define("order", {
-        date: {
+        /*date: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-        },
+        },*/
         total: {
-            type: Sequelize.FLOAT
+            type: Sequelize.INTEGER
         },
         status: {
             type: Sequelize.STRING
         },
         id_user: {
             type: Sequelize.INTEGER
-        },
+        }/*,
         createdAt: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
@@ -22,9 +22,9 @@ module.exports = (sequelize, Sequelize) => {
         updatedAt: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        }
+        }*/
 
-    }, { timestamps: true });
+    }, { timestamps: false });
 
     return order;
 };

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="addAddress(form)">
+
+    <div padding>
+    <ion-item>
+      <ion-input name="street" type="text" placeholder="Street" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input name="number" type="text" placeholder="Number"  ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="zipCode" type="text" placeholder="Zip Code" ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="province" type="text" placeholder="Province" ngModel required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="country" type="text"  placeholder="Country" ngModel required>
+      </ion-input>
+    </ion-item>
+  </div>
+ 
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+ 
+    
+</ion-content>
