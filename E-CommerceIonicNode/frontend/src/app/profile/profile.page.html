@@ -8,33 +8,30 @@
 </ion-header>
 
 <ion-content>
-  
-  <ion-card>
-    <ion-card-header>
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <ion-card-title>Username: {{currentUser.username}}</ion-card-title>
-      <ion-card-subtitle>E-mail: {{currentUser.email}}</ion-card-subtitle>
-      <ion-card-subtitle>Name: {{currentUser.name}}</ion-card-subtitle>
-      <ion-card-subtitle>Last Name: {{currentUser.lastName}}</ion-card-subtitle>
+
+  <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+    <p id="data">Personal data</p>
+  <div class="container">
+    <p>Username: {{currentUser.username}}</p>
+    <p>E-mail: {{currentUser.email}}</p>
+    <p>Name: {{currentUser.name}}</p>
+    <p>Last Name: {{currentUser.lastName}}</p>
+
+  </div>
+  <div class="buttons">
+  <ion-button color="medium" (click)="logout()">Log out</ion-button>
+  <ion-button color="medium" (click)="updateInfo(currentUser.id)">Update User</ion-button>
+  <ion-button color="medium" (click)="addAddress()">Add Address</ion-button>
+</div>
 
 
-    </ion-card-header>
-  
-    <ion-card-content>
-    
-  <ion-button (click)="logout()">Log out</ion-button>
-  <ion-button (click)="addAddress()">Add Address</ion-button>
 
-    </ion-card-content>
-  </ion-card>
-  
+
+
+
   <ng-template #loggedOut>
     Please login.
   </ng-template>
 
-  <img id="logoImg"  src="https://thetandementerprise.com/wp-content/uploads/2020/06/logo-retina.png" />
+  <img id="logoImg" src="https://thetandementerprise.com/wp-content/uploads/2020/06/logo-retina.png" />
 </ion-content>

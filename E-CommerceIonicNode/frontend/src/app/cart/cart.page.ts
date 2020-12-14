@@ -97,6 +97,8 @@ export class CartPage {
     this.cartIsEmpty = false;
   }
 
+ 
+
   async openCart() {
     this.animateCSS('bounceOutLeft', true);
 

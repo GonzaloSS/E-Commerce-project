@@ -6,59 +6,39 @@ import { EcommerceService } from '../services/ecommerce.service';
 import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  selector: 'app-update-user',
+  templateUrl: './update-user.page.html',
+  styleUrls: ['./update-user.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class UpdateUserPage implements OnInit {
   currentUser: any;
-
+  form: any = {};
+  isSuccessful = false;
+  isUpdateFailed = false;
+  errorMessage = '';
+  isLoggedIn: boolean;
   private roles: string[];
-  isLoggedIn = false;
   username: string;
 
-
   constructor(
-    private token: TokenStorageService,
+    private authService: AuthService,
     private router: Router,
     private tokenStorageService: TokenStorageService,
     private menu: MenuController,
-    private authService: AuthService
-    ) { }
+    private service: EcommerceService) { }
 
   ngOnInit() {
-    this.currentUser = this.token.getUser();
-    console.log(this.currentUser);
-    
+    let id = this.authService.getCurrentUserId();
+    this.currentUser = this.tokenStorageService.getUser();
   }
-
-  logout() {
-    this.token.signOut();
-    window.location.reload()
-    this.goToHome();
-  }
-
-  updateInfo(id: number){
-    this.authService.setCurrentUserId(id);
-    console.log(id);
-    
-    this.router.navigateByUrl("update-user");
-  }
-  
-  goToHome(){
-    this.router.navigateByUrl("home");
-  }
-
-  addAddress(){
-    this.router.navigateByUrl("add-address")
-  }
-
+ 
   toggleMenu() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
+      
 
       if (this.roles.includes('ROLE_USER')) {
         this.menu.enable(true, 'user');
@@ -76,6 +56,22 @@ export class ProfilePage implements OnInit {
       this.menu.open('guest');
     }
 
+  }
+
+  onSubmit() {
+    let id = this.authService.getCurrentUserId();
+    this.authService.update(id ,this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isUpdateFailed = false;
+        this.router.navigateByUrl("cart");
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isUpdateFailed = true;
+      }
+    );
   }
 
 }

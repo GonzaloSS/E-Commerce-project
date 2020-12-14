@@ -52,8 +52,16 @@ const routes: Routes = [
     loadChildren: () => import('./edit-product/edit-product.module').then( m => m.EditProductPageModule)
   },
   {
-    path: 'add-user',
-    loadChildren: () => import('./add-user/add-user.module').then( m => m.AddUserPageModule)
+    path: 'update-user',
+    loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
+  },
+  {
+    path: 'tracker',
+    loadChildren: () => import('./tracker/tracker.module').then( m => m.TrackerPageModule)
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
   }
   
   

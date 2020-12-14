@@ -25,7 +25,43 @@
           <ion-icon name="business-outline"></ion-icon>
           Contact page
         </ion-item>
-        <ion-item [routerLink]="['log-out']">
+        <ion-item [routerLink]="['logout']">
+          <ion-icon name="log-out-outline"></ion-icon>
+          Log-out
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-menu side="start" menuId="admin" contentId="main">
+    <ion-header>
+      <ion-toolbar color="medium">
+        <ion-title>Admin Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item [routerLink]="['home']">
+          <ion-icon name="home-outline"></ion-icon>
+
+          Home
+        </ion-item>
+        <ion-item [routerLink]="['cart']">
+          <ion-icon name="book-outline"></ion-icon>
+          Catalogue
+        </ion-item>
+        <ion-item [routerLink]="['tracker']">
+          <ion-icon name="analytics-outline"></ion-icon>
+          Edit tracking status
+        </ion-item>
+        <ion-item [routerLink]="['profile']">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          My profile
+        </ion-item>
+        <ion-item [routerLink]="['contact-page']">
+          <ion-icon name="business-outline"></ion-icon>
+          Contact page
+        </ion-item>
+        <ion-item [routerLink]="['logout']">
           <ion-icon name="log-out-outline"></ion-icon>
           Log-out
         </ion-item>
@@ -44,7 +80,8 @@
       <ion-list>
         <ion-item [routerLink]="['home']">
           <ion-icon name="home-outline"></ion-icon>
-          Home</ion-item>
+          Home
+        </ion-item>
         <ion-item [routerLink]="['cart']">
           <ion-icon name="book-outline"></ion-icon>
           Catalogue
@@ -61,46 +98,16 @@
           <ion-icon name="person-add-outline"></ion-icon>
           Register
         </ion-item>
-       
-        
+
+
       </ion-list>
     </ion-content>
   </ion-menu>
 
 
-  <ion-menu side="start" menuId="admin" contentId="main">
-    <ion-header>
-      <ion-toolbar color="medium">
-        <ion-title>Admin Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item [routerLink]="['home']">
-          <ion-icon name="home-outline"></ion-icon>
 
-          Home
-        </ion-item>
-        <ion-item [routerLink]="['cart']">
-          <ion-icon name="book-outline"></ion-icon>
-          Catalogue
-        </ion-item>
-        <ion-item [routerLink]="['profile']">
-          <ion-icon name="person-circle-outline"></ion-icon>
-          My profile
-        </ion-item>
 
-        <ion-item [routerLink]="['contact-page']">
-          <ion-icon name="business-outline"></ion-icon>
-          Contact page
-        </ion-item>
-        <ion-item [routerLink]="['log-out']">
-          <ion-icon name="log-out-outline"></ion-icon>
-          Log-out
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+
 
   <ion-router-outlet id="main"></ion-router-outlet>
 

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { catchError, tap, map } from 'rxjs/operators';
 import { Products } from '../models/product';
+import { AuthService } from './auth.service';
 
 
 const httpOptions = {
@@ -24,7 +25,9 @@ export class CartService {
   public cart = [];
   public cartItemCount = new BehaviorSubject(0);
   
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthService) {}
 
   getProducts(): Observable<Products[]> {
     return this.httpClient.get<Products[]>(apiUrlProducts)
@@ -77,6 +80,8 @@ export class CartService {
     this.cartItemCount.next(this.cartItemCount.value - 1);
   }
 
+  
+
   removeProduct(product) {
     for (const [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
@@ -85,6 +90,8 @@ export class CartService {
       }
     }
   }
+
+  
 
   clearCart() {
     this.cart.length = 0;

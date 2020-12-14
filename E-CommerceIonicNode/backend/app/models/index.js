@@ -51,6 +51,17 @@ db.address.hasOne(db.user, {
 
 db.ROLES = ["user", "admin", "moderator"];
 
+
+db.order.hasOne(db.orderProduct, {
+  through: 'orderproducts',
+   foreignKey: 'id_order'
+  });
+
+  db.user.hasOne(db.order, {
+    through: 'orders', 
+    foreignKey: 'id_user'});
+
+
 ///Associations///
 
 //Foreign Key for user's table//
@@ -63,7 +74,7 @@ db.user.hasMany(db.order, {as: 'orders', foreignKey: 'id_user'});
 
 //Foreign Key for orderProducts's table//
 db.products.hasMany(db.orderProduct, {as: 'orderproducts', foreignKey: 'id_product'});
-db.order.hasMany(db.orderProduct, {as: 'orderproducts', foreignKey: 'id_order'});
+
 ////////////////////////////////
 
 module.exports = db;
