@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="start" (click)="toggleMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>
+      Canary products
+    </ion-title>
+    <ion-item slot="end" *ngIf="isAdmin">
+      <div class="container" >
+        <ion-button   fill="clear" (click)="addProduct()">
+          Add a product
+        </ion-button>
+      </div>
+    </ion-item>
+      <p slot="end"  *ngIf="isLoggedIn">{{currentUser.username}}</p>
+    <ion-item slot="end">
+      <ion-icon name="person-circle-outline" (click)="openProfileCheckUser()"></ion-icon>
+    </ion-item>
+    <ion-item slot="end">
+      <ion-icon name="moon" ></ion-icon>
+      <ion-toggle (ionChange)='toggleTheme($event)'></ion-toggle>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-list>
+    <ion-row >
+      <ion-col size-lg="4" size-md="4" size-sm="4" size="12" *ngFor="let p of products" id="products" >
+    <ion-card >
+      <ion-card-header>
+        <img src="https://lavits.org/wp-content/themes/flymag/images/placeholder.png">
+        <ion-card-title>{{ p.name }}</ion-card-title>
+        <ion-card-subtitle>Price: {{p.price}}€</ion-card-subtitle>
+        <ion-card-subtitle>Description: {{p.description}}</ion-card-subtitle>
+        <ion-card-subtitle>Category: {{p.category}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="8" class="ion-text-left" *ngIf="p.availability==='Yes'">
+            <ion-button fill="clear" (click)="addToCart(p)">
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="8" class="ion-text-left" *ngIf="p.availability==='No'">
+            <p>Agotado</p>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label color="secondary">
+              <b>Price: {{ p.price }} €</b>
+            </ion-label>
+          </ion-col>
+          <ion-col size="8" >
+              <div class="container" *ngIf="isAdmin">
+                <ion-button   fill="clear" (click)="deleteProduct(p.id)">
+                  <ion-icon name="trash"></ion-icon>
+                </ion-button>
+                <ion-button   fill="clear" (click)="editProduct(p.id)">
+                  <ion-icon name="create-outline"></ion-icon>
+                </ion-button>
+              </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-fab *ngIf="!cartIsEmpty" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCartCheckUser()" #cart>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab *ngIf="cartIsEmpty" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openEmptyCartAlert()" #cart>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+  
+
+</ion-content>

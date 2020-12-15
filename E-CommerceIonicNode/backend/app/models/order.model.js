@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         total: {
-            type: Sequelize.FLOAT
+            type: Sequelize.INTEGER
         },
         status: {
             type: Sequelize.STRING
@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         }
 
-    }, { timestamps: true });
+    }, { timestamps: false });
 
     return order;
 };

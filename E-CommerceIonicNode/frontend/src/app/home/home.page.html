@@ -1,0 +1,24 @@
+<ion-header [translucent]="true"></ion-header>
+<ion-content [fullscreen]="true">
+  
+    <div id="container">
+    <div class="buttons" id="buttons">
+      <ion-button (click)="goToCatalogue()" color="medium" >Catalogue </ion-button>
+    
+      <div class="container" *ngIf="!isLoggedIn">
+        <ion-button (click)="goToLogin()" color="medium" >Login </ion-button>
+      </div>
+      <div class="container" *ngIf="isLoggedIn">
+        <ion-button (click)="logout()" color="medium" >Log-out </ion-button>
+      </div>
+      <div class="another-test" #div></div>
+      <ion-button (click)="goToContactPage()" color="medium" >Contact page </ion-button>
+    </div>
+  </div>
+
+  
+
+  <img id="logoImg" src="https://thetandementerprise.com/wp-content/uploads/2020/06/logo-retina.png"/>
+
+  <p id="mainText">Venta de productos Canarios</p>
+</ion-content>

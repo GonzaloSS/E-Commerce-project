@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add a new Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="addProduct(form)">
+
+    <div padding>
+      <ion-item>
+        <ion-input name="name" type="text" placeholder="Product Name" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="description" type="text" placeholder="Description" ngModel required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="price" type="number" placeholder="Price €" ngModel required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="taxRate" type="number" placeholder="Tax Rate %" ngModel required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="image" type="text" placeholder="Image description only" ngModel required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select name="category" type="text" ngModel required>
+          <ion-select-option value="Lácteos">Lácteos</ion-select-option>
+          <ion-select-option value="Carne/Pescado/Huevos">Carne/Pescado/Huevos</ion-select-option>
+          <ion-select-option value="Patatas/Legumbres/Frutos secos">Patatas/Legumbres/Frutos secos</ion-select-option>
+          <ion-select-option value="Verduras/Hortalizas">Verduras/Hortalizas</ion-select-option>
+          <ion-select-option value="Frutas">Frutas</ion-select-option>
+          <ion-select-option value="Cereales/Derivados/Azúcar y Dulces">Cereales/Derivados/Azúcar y Dulces
+          </ion-select-option>
+          <ion-select-option value="Grasas/Aceite/Mantequilla">Grasas/Aceite/Mantequilla</ion-select-option>
+          <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Availability</ion-label>
+        <ion-select name="availability" type="text" ngModel required>
+          <ion-select-option value="Yes">Yes</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add product</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

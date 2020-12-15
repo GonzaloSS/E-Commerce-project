@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       taxRate: {
         type: Sequelize.STRING
@@ -20,6 +20,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       availability: {
         type: Sequelize.STRING
+      },
+      amount: {
+        type: Sequelize.INTEGER
       }
       
     }, { timestamps: false});

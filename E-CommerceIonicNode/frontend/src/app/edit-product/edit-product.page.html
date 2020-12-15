@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit a Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <form [formGroup]="productUpdateForm" (ngSubmit)="onFormSubmit()">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name" type="text" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input formControlName="description" type="text" required>
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">price</ion-label>
+        <ion-input formControlName="price" type="text" required>
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Tax Rate</ion-label>
+        <ion-input formControlName="taxRate" type="text" required>
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">image</ion-label>
+        <ion-input formControlName="image" type="text" required>
+        </ion-input>
+      </ion-item>
+   
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select formControlName="category" type="text" required>
+          <ion-select-option value="Lácteos">Lácteos</ion-select-option>
+          <ion-select-option value="Carne/Pescado/Huevos">Carne/Pescado/Huevos</ion-select-option>
+          <ion-select-option value="Patatas/Legumbres/Frutos secos">Patatas/Legumbres/Frutos secos</ion-select-option>
+          <ion-select-option value="Verduras/Hortalizas">Verduras/Hortalizas</ion-select-option>
+          <ion-select-option value="Frutas">Frutas</ion-select-option>
+          <ion-select-option value="Cereales/Derivados/Azúcar y Dulces">Cereales/Derivados/Azúcar y Dulces
+          </ion-select-option>
+          <ion-select-option value="Grasas/Aceite/Mantequilla">Grasas/Aceite/Mantequilla</ion-select-option>
+          <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Availability</ion-label>
+        <ion-select formControlName="availability" type="text" required>
+          <ion-select-option value="Yes">Yes</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+       </ion-item>
+     
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">Update Product</ion-button>
+          <ion-button href="cart" color="primary" shape="full" expand="block">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  
+  
+</ion-content>

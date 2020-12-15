@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="start" (click)="toggleMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>Edit tracking status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list >
+    <ion-row >
+      <ion-col *ngFor="let o of order" >
+        <div class="container" style="border-style: groove;" >
+        <p>Nº de pedido: {{ o.id }}</p>
+        <p>Total: {{o.total}}€</p>
+        <p>Estado del seguimiento: {{o.status}}</p>
+
+        <div class="container" *ngIf="changeTrack" slot="end">
+          <form [formGroup]="orderUpdateForm" (ngSubmit)="onFormSubmit(o.id)">
+            <ion-item>
+              <ion-label>Status</ion-label>
+              <ion-select formControlName="status" type="text" required>
+                <ion-select-option value="En proceso">En proceso</ion-select-option>
+                <ion-select-option value="Pago realizado">Pago realizado</ion-select-option>
+                <ion-select-option value="Enviado">Enviado</ion-select-option>
+                <ion-select-option value="Recepcionado">Recepcionado</ion-select-option>
+                <ion-select-option value="En camino">En camino</ion-select-option>
+                <ion-select-option value="Entregado">Entregado</ion-select-option>
+              </ion-select>
+             </ion-item>
+        
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" color="primary" shape="full" expand="block">Update Track</ion-button>
+                <ion-button href="cart" color="primary" shape="full" expand="block">Cancel</ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </div>
+
+      </div>
+      
+      
+        <ion-col size="8">
+          
+          <div class="container" *ngIf="isAdmin" style="border-style: groove;">
+            <ion-button   fill="clear" (click)="editTrack()" >
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button  *ngIf="o.status == 'Entregado'" fill="clear" (click)="deleteTrack(o.id)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </div>
+          
+      </ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
