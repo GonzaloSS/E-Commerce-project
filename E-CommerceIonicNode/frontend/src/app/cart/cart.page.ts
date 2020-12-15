@@ -165,9 +165,7 @@ export class CartPage {
       this.roles = user.roles;
 
       this.openCart();
-      /*this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');*/
-
+     
       this.username = user.username;
     } else {
       this.modalCtrl.create(

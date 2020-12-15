@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import { EcommerceService } from '../services/ecommerce.service';
 import { TokenStorageService } from '../services/token-storage.service';
 @Component({
   selector: 'app-register',
@@ -22,9 +23,13 @@ export class RegisterPage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private tokenStorageService: TokenStorageService,
-    private menu: MenuController) { }
+    private menu: MenuController,
+    private service: EcommerceService) { }
 
   ngOnInit() {
+    
+    
+    
   }
  
   toggleMenu() {
@@ -53,7 +58,8 @@ export class RegisterPage implements OnInit {
   }
 
   onSubmit() {
-    this.authService.register(this.form).subscribe(
+    let id= this.service.getCurrentAddressId();
+    this.authService.register(this.form, id).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

@@ -27,12 +27,9 @@ export class AddAddressPage implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
   
       if (this.isLoggedIn) {
-        
+        this.router.navigateByUrl("home");
       }else{
-        this.modalCtrl.create(
-          {component: ModalpopupPage}).then((modalElement) =>{
-          modalElement.present();
-        })
+        
       }
       }
 
@@ -41,13 +38,14 @@ export class AddAddressPage implements OnInit {
           id: null,
           street: form.value.street,
           number: form.value.number,
+          location: form.value.location,
           zipCode: form.value.zipCode,
           province: form.value.province,
           country: form.value.country
           
         };
         this.ecommerceService.addAddress(address).subscribe((res) => {
-          this.router.navigateByUrl("profile");
+          this.router.navigateByUrl("addresses");
         })
   }
 }

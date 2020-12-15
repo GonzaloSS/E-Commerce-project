@@ -10,19 +10,33 @@
 <ion-content>
 
   <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
-    <p id="data">Personal data</p>
+  <p id="data">Personal data</p>
   <div class="container">
     <p>Username: {{currentUser.username}}</p>
     <p>E-mail: {{currentUser.email}}</p>
     <p>Name: {{currentUser.name}}</p>
     <p>Last Name: {{currentUser.lastName}}</p>
 
+    <div class="cont" *ngIf="isAddress">
+      <p> Street: {{currentAddress.street}}</p>
+      <p> Number: {{currentAddress.number}}</p>
+      <p> Zip Code: {{currentAddress.zipCode}}</p>
+      <p> Location: {{currentAddress.location}}</p>
+      <p> Location: {{currentAddress.country}}</p>
+    </div>
   </div>
+  
+
+
+
   <div class="buttons">
-  <ion-button color="medium" (click)="logout()">Log out</ion-button>
-  <ion-button color="medium" (click)="updateInfo(currentUser.id)">Update User</ion-button>
-  <ion-button color="medium" (click)="addAddress()">Add Address</ion-button>
-</div>
+    <ion-button color="medium" (click)="logout()">Log out</ion-button>
+    <ion-button color="medium" (click)="updateInfo(currentUser.id)">Update User</ion-button>
+    <ion-button color="medium" (click)="getAddress(currentUser.id_address)">See your address</ion-button>
+    
+  </div>
+
+
 
 
 

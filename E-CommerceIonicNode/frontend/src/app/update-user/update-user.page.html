@@ -10,77 +10,35 @@
 
 <ion-content>
 
-  <div class="col-md-12">
-    <div class="card card-container">
-      <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
-      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3"
-            maxlength="20" #username="ngModel" />
-          <div class="alert-danger" *ngIf="f.submitted && username.invalid">
-            <div *ngIf="username.errors.required">Username is required</div>
-            <div *ngIf="username.errors.minlength">
-              Username must be at least 3 characters
-            </div>
-            <div *ngIf="username.errors.maxlength">
-              Username must be at most 20 characters
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
-            #email="ngModel" />
-          <div class="alert-danger" *ngIf="f.submitted && email.invalid">
-            <div *ngIf="email.errors.required">Email is required</div>
-            <div *ngIf="email.errors.email">
-              Email must be a valid email address
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required
-            #name="ngModel" />
-          <div class="alert-danger" *ngIf="f.submitted && name.invalid">
-            <div *ngIf="name.errors.required">Name is required</div>
-           
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="form.lastName" required 
-              #lastName="ngModel" />
-            <div class="alert-danger" *ngIf="f.submitted && lastName.invalid">
-              <div *ngIf="name.errors.required">Last Name is required</div>
-              
-            </div>
-          </div>
-        </div>
-       
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
-            #password="ngModel" />
-          <div class="alert-danger" *ngIf="f.submitted && password.invalid">
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary btn-block">Sign Up</button>
-        </div>
+  <form [formGroup]="userUpdateForm" (ngSubmit)="onFormSubmit()">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input formControlName="username" type="text" required></ion-input>
+    </ion-item>
 
-        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-          Signup failed!<br />{{ errorMessage }}
-        </div>
-      </form>
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input formControlName="email" type="email"  disabled="true" required>
+      </ion-input>
+    </ion-item>
 
-      <div class="alert alert-success" *ngIf="isSuccessful">
-        Your registration is successful!
-      </div>
-    </div>
-  </div>
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input formControlName="lastName" type="text" required>
+      </ion-input>
+    </ion-item>
+    
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" shape="full" expand="block">Update User</ion-button>
+        <ion-button href="cart" color="primary" shape="full" expand="block">Cancel</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

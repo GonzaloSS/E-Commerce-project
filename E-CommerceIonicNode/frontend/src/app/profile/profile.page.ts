@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { Address } from '../models/address';
 import { AuthService } from '../services/auth.service';
 import { EcommerceService } from '../services/ecommerce.service';
 import { TokenStorageService } from '../services/token-storage.service';
@@ -12,25 +14,42 @@ import { TokenStorageService } from '../services/token-storage.service';
 })
 export class ProfilePage implements OnInit {
   currentUser: any;
+  currentAddress: any;
 
   private roles: string[];
   isLoggedIn = false;
+  isAddress : boolean;
   username: string;
 
 
   constructor(
     private token: TokenStorageService,
     private router: Router,
-    private tokenStorageService: TokenStorageService,
     private menu: MenuController,
-    private authService: AuthService
+    private authService: AuthService,
+    private service: EcommerceService,
+    private httpClient: HttpClient
     ) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
     console.log(this.currentUser);
     
+   
+   
   }
+
+
+  getAddress(id: number){
+    this.service.setCurrentAddressId(id);
+    this.service.getAddressById().subscribe( address => {
+      this.currentAddress = address;
+      this.isAddress= true;
+      console.log(this.currentAddress);
+      
+    });
+  }
+
 
   logout() {
     this.token.signOut();
@@ -49,15 +68,13 @@ export class ProfilePage implements OnInit {
     this.router.navigateByUrl("home");
   }
 
-  addAddress(){
-    this.router.navigateByUrl("add-address")
-  }
+  
 
   toggleMenu() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.isLoggedIn = !!this.token.getToken();
 
     if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
+      const user = this.token.getUser();
       this.roles = user.roles;
 
       if (this.roles.includes('ROLE_USER')) {

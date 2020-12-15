@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
@@ -11,6 +12,7 @@ import { TokenStorageService } from '../services/token-storage.service';
   styleUrls: ['./update-user.page.scss'],
 })
 export class UpdateUserPage implements OnInit {
+  userUpdateForm: FormGroup;
   currentUser: any;
   form: any = {};
   isSuccessful = false;
@@ -25,11 +27,29 @@ export class UpdateUserPage implements OnInit {
     private router: Router,
     private tokenStorageService: TokenStorageService,
     private menu: MenuController,
-    private service: EcommerceService) { }
+    private service: EcommerceService,
+    private fb: FormBuilder) {
+
+      this.userUpdateForm = this.fb.group({
+        username: [''],
+        email: [''],
+        name: [''],
+        lastName: ['']
+     })
+    }
 
   ngOnInit() {
     let id = this.authService.getCurrentUserId();
     this.currentUser = this.tokenStorageService.getUser();
+
+    this.authService.getUserById(id).subscribe((u) => {
+      this.userUpdateForm = this.fb.group({
+        username: u.username,
+        email: u.email,
+        name: u.name,
+        lastName: u.lastName
+      })
+    })
   }
  
   toggleMenu() {
@@ -58,20 +78,29 @@ export class UpdateUserPage implements OnInit {
 
   }
 
-  onSubmit() {
+  onFormSubmit(){
     let id = this.authService.getCurrentUserId();
-    this.authService.update(id ,this.form).subscribe(
-      data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isUpdateFailed = false;
-        this.router.navigateByUrl("cart");
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isUpdateFailed = true;
+    if(!this.userUpdateForm.valid){
+      return false;
+    }else{
+      let user = {
+        id: id,
+        username: this.userUpdateForm.value.username,
+        email: this.userUpdateForm.value.email,
+        name: this.userUpdateForm.value.name,
+        lastName: this.userUpdateForm.value.lastName,
+        password: null,
+        id_address: null,
+        
       }
-    );
+      this.service.updateUser(id, user)
+      .subscribe((res)=>{
+        this.router.navigateByUrl("profile");
+      
+        
+      })
+    }
   }
+ 
 
 }
