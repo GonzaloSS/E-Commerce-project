@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     lastName:{
       type: Sequelize.STRING
+    },
+    id_address:{
+      type: Sequelize.INTEGER
     }
     
   });

@@ -46,6 +46,8 @@ module.exports = function (app) {
 
   app.post("/api/address/", addcontroller.create);
 
+  app.get("/api/address", addcontroller.findAll);
+
   app.get("/api/address/:id", addcontroller.findOne);
 
   app.put("/api/address/:id", addcontroller.update);
@@ -58,7 +60,6 @@ module.exports = function (app) {
 
   app.get("/api/order/", ordercontroller.findAll);
 
-  app.get("/api/order/:id", ordercontroller.findOne);
 
   app.put("/api/order/:id", ordercontroller.update);
 
@@ -66,15 +67,15 @@ module.exports = function (app) {
 
   //ROUTES ORDERPRODUCT
 
-  app.post("/", orderProductcontroller.create);
+  app.post("/api/orderProduct", orderProductcontroller.create);
 
-  app.get("/", orderProductcontroller.findAll);
+  app.get("/api/orderProduct", orderProductcontroller.findAll);
 
-  app.get("/:id", orderProductcontroller.findOne);
+  app.get("/api/orderProduct/:id", orderProductcontroller.findOne);
 
-  app.put("/:id", orderProductcontroller.update);
+  app.put("/api/orderProduct/:id", orderProductcontroller.update);
 
-  app.delete("/:id", orderProductcontroller.delete);
+  app.delete("/api/orderProduct/:id", orderProductcontroller.delete);
 
 }
 

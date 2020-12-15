@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 // req --> request (contains the body)
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.street  || !req.body.number || !req.body.zipCode || !req.body.province || !req.body.country) {
+  if (!req.body.street  || !req.body.number || !req.body.zipCode || !req.body.province || !req.body.location || !req.body.country) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -18,6 +18,7 @@ exports.create = (req, res) => {
     street: req.body.street,
     number: req.body.number,
     zipCode: req.body.zipCode,
+    location: req.body.location,
     province: req.body.province,
     country: req.body.country
   };
@@ -35,6 +36,19 @@ exports.create = (req, res) => {
     });
 };
 
+exports.findAll = (req, res) => {
+
+  Address.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Addresses."
+      });
+    });
+};
 
 // Find a single Airport with an id
 exports.findOne = (req, res) => {

@@ -3,7 +3,7 @@
     <img src="img\logo.png" alt="Logo" width="320" height="160">
 </p>
 
-_This project is an electronic commerce for a Business called Tandem, it's about selling canary products..._
+_This project is an electronic commerce for a Business called The Tandem Enterprise, it's about selling canary products..._
 
 ## Starting 🚀
 
@@ -337,6 +337,11 @@ When you have the folder, go to E-commerce-project/E-commerceIonicNode/backend a
 
 *Do it too with E-commerce-project/E-commerceIonicNode/frontend*
 <br><br>
+
+
+You need to execute de SQL Script give it on the folder SQL
+
+
 _Now it's time to deploy it_
     
 
@@ -345,6 +350,10 @@ _Now it's time to deploy it_
 
 
 ### Deploy 📦
+
+
+If you only want to see the API Back-END, import into POSTMAN the file API E-CommerceProject.postman_collection into the folder API POSTMAN
+
 
 First, in the back end you need to edit db.config.js
 <br>
@@ -487,7 +496,7 @@ _For this project I use Ionic, Node js and MySQL_
 * **Juan Gonzalo Santana Santana** - *Author* - [GonzaloSS](https://github.com/GonzaloSS)
 
 
-## Expresiones de Gratitud 🎁
+## Acknowledgment 🎁
 
 * Thanks to The Tandem Enterprise for give us a chance to make this project and work together!! 📢
 
