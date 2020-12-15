@@ -354,7 +354,6 @@ _Now it's time to deploy it_
 
 If you only want to see the API Back-END, import into POSTMAN the file API E-CommerceProject.postman_collection into the folder API POSTMAN
 
-
 First, in the back end you need to edit db.config.js
 <br>
 
