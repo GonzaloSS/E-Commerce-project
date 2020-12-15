@@ -105,11 +105,17 @@ Here are the tables with the E/R to Relational
     Web Aplication
 
 
-    If you are a guest, you will see the catalogue, home, contact page and you can log-in and register also you can see your side-meno by your role "guest"
+    If you are a guest, you will see the catalogue, home, 
+    contact page and you can log-in and register also
+    you can see your side-meno by your role "guest"
 
-    If you are a user, you will see the catalogue and you can add products and buy it, you can go to your profile and there you can add address, edit update(not recommended yet) and log out, you can go to contact page, and see your side-menu by your role "user"
+    If you are a user, you will see the catalogue and you can add products and buy it, you can go to
 
-    If you are an admin, you will see the same features like user but you can add, edit and delete products and finally you can edit and remove the tracing of users
+    your profile and there you can add address, edit update(not recommended yet) and log out, you can
+    go to contact page, and see your side-menu by your role "user"
+
+    If you are an admin, you will see the same features like user but you can add, edit and
+    delete products and finally you can edit and remove the tracing of users
 
 
 ---
@@ -453,7 +459,9 @@ PROS OF MEAN
 
 ## Conclusion 💬
 
-    In my conclusion was a hard weeks to made this possible but I reached big goals settings by my self so I'm very proud of my self, this ecommerce was good to start programming a full stack project so I'm very happy with this project. 
+    In my conclusion was a hard weeks to made this possible but I reached big goals settings by my
+    self so I'm very proud of my self, this ecommerce was good to start programming a full
+    stack project so I'm very happy with this project. 
 ---
 
 
