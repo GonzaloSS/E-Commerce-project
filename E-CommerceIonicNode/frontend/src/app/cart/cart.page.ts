@@ -82,6 +82,7 @@ export class CartPage {
       this.products = product;
       console.log(product);
     });
+    
     this.cart = this.cartService.getCart();
     this.cartIsEmpty = true;
     this.cartItemCount = this.cartService.getCartItemCount();
@@ -97,7 +98,7 @@ export class CartPage {
     this.cartIsEmpty = false;
   }
 
- 
+
 
   async openCart() {
     this.animateCSS('bounceOutLeft', true);

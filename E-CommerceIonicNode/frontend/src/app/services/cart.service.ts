@@ -26,8 +26,8 @@ export class CartService {
   public cartItemCount = new BehaviorSubject(0);
   
   constructor(
-    private httpClient: HttpClient,
-    private authService: AuthService) {}
+    private httpClient: HttpClient
+    ) {}
 
   getProducts(): Observable<Products[]> {
     return this.httpClient.get<Products[]>(apiUrlProducts)

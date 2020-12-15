@@ -31,7 +31,7 @@ db.orderProduct = require("./orderProduct.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
 
-
+///Associations///
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
@@ -54,27 +54,24 @@ db.ROLES = ["user", "admin", "moderator"];
 
 db.order.hasOne(db.orderProduct, {
   through: 'orderproducts',
-   foreignKey: 'id_order'
-  });
+  foreignKey: 'id_order'
+});
 
-  db.user.hasOne(db.order, {
-    through: 'orders', 
-    foreignKey: 'id_user'});
+db.user.hasOne(db.order, {
+  through: 'orders',
+  foreignKey: 'id_user'
+});
 
+db.user.hasOne(db.order, {
+  through: 'orders',
+  foreignKey: 'id_user'
+});
 
-///Associations///
+db.products.hasOne(db.orderProduct, { 
+  through: 'orderproducts', 
+  foreignKey: 'id_product' });
 
-//Foreign Key for user's table//
+/////////////////////////////////////
 
-////////////////////////////////
-
-//Foreign Key for order's table//
-db.user.hasMany(db.order, {as: 'orders', foreignKey: 'id_user'});
-////////////////////////////////
-
-//Foreign Key for orderProducts's table//
-db.products.hasMany(db.orderProduct, {as: 'orderproducts', foreignKey: 'id_product'});
-
-////////////////////////////////
 
 module.exports = db;
