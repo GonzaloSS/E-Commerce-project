@@ -450,7 +450,7 @@ PROS OF MEAN
 ---
 <br>
 
-## Planning  <a name="idPlanification"></a>📅
+## Planning 📅  <a name="idPlanification"></a>
 
 [Go to planning](https://github.com/users/GonzaloSS/projects/1)
 
