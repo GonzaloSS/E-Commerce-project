@@ -130,7 +130,7 @@ Here are the tables with the E/R to Relational
 ---
  <br>
 
-## Interface 💻
+## Interface <a name="idInterfaces"></a>💻
 <br>
 First, I will show you a summary about the mockup, then you can go to see it by yourself here ->
 <a href="https://xd.adobe.com/view/53abf172-94a6-4d25-7a15-86feb7d91d5d-259a/screen/0e10163d-4261-4469-a429-fe2e825ac758?fullscreen">Link to E-commerce Tandem mockup</a>
@@ -167,7 +167,7 @@ If you want to see more, go to <a href="https://xd.adobe.com/view/53abf172-94a6-
 
 <br><br>
 
-## Usability 📝
+## Usability <a name="idUsability"></a> 📝
 
 <br><br><br>
 
@@ -361,7 +361,7 @@ _To deploy the backend you need to put in the terminal npm start and to deploy t
 ---
 <br>
 
-## TECHNOLOGY STACK 👨‍💻
+## TECHNOLOGY STACK <a name="idTechStack"></a>👨‍💻
 
 
 _This project have a stack like MEAN but for this time isn't mongoose it's mysql and it's not only angular is Ionic/Angular_
@@ -390,7 +390,7 @@ Ionic/Angular
 <br><br>
 
 
-## TECHNOLOGICAL COMPARISON ⚙️
+## TECHNOLOGICAL COMPARISON <a name="idCompareTech"></a> ⚙️
 
 IONIC, EXPRESS, NODE JS, MYSQL(IENM):
 
@@ -443,21 +443,21 @@ PROS OF MEAN
 ---
 <br>
 
-## Repository 👨‍💻
+## Repository <a name="idRepositories"></a>👨‍💻
 
 [GonzaloSS](https://github.com/GonzaloSS/E-Commerce-project)
 
 ---
 <br>
 
-## Planning 📅
+## Planning  <a name="idPlanification"></a>📅
 
 [Go to planning](https://github.com/users/GonzaloSS/projects/1)
 
 ---
 <br>
 
-## Conclusion 💬
+## Conclusion <a name="idConclusion"></a> 💬
 
     In my conclusion was a hard weeks to made this possible but I reached big goals settings by my
     self so I'm very proud of my self, this ecommerce was good to start programming a full
