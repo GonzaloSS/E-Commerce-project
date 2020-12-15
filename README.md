@@ -280,7 +280,7 @@ Appropriate response to user actions_
 </p>
 
 <br><br><br> 
-s
+
 * _Consistency. Whenever possible, the interface should be consistent. This implies that similar operations will have to be activated in the same way. Furthermore, ergonomics should be taken into account through menus, action bars and icons that are easy to access and identify._ 
 
 <p align="center">
@@ -343,7 +343,7 @@ _Now it's time to deploy it_
 First, in the back end you need to edit db.config.js
 <br>
 
-<img src="img\dbconfig.png" width="300"  alt="MainView" >
+<img src="img\db.png" width="300"  alt="MainView" >
 <br>
 
 _Where DB go database and where PASSWORD go your root password_
