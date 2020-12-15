@@ -280,7 +280,7 @@ Appropriate response to user actions_
 </p>
 
 <br><br><br> 
-
+s
 * _Consistency. Whenever possible, the interface should be consistent. This implies that similar operations will have to be activated in the same way. Furthermore, ergonomics should be taken into account through menus, action bars and icons that are easy to access and identify._ 
 
 <p align="center">
